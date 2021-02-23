@@ -17,7 +17,7 @@ This document is a requirements document to support those discussions.
 
 Editors:
 
-* Ian Jacobs
+* [Ian Jacobs](mailto:ij@w3.org)
 * Richard Ledain
 * Sameer Tare
 
