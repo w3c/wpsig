@@ -21,6 +21,14 @@ Editors:
 * Richard Ledain
 * Sameer Tare
 
+'''Status''': This is a draft and represents no consensus.
+
+## Background
+
+## Assumptions
+
+## Requirements
+
 ## Acknowledgments
 
 EMV® is a registered trademark in the U.S. and other countries and an unregistered trademark elsewhere. The EMV trademark is owned by EMVCo, LLC.
