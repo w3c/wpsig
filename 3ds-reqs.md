@@ -25,9 +25,17 @@ Editors:
 
 ## Background
 
+## Goals
+
+### Non-Goals
+
+## Flows
+
 ## Assumptions
 
 ## Requirements
+
+## Questions
 
 ## Acknowledgments
 
