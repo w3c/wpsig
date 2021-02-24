@@ -21,7 +21,7 @@ Editors:
 * Richard Ledain
 * Sameer Tare
 
-'''Status''': This is a draft and represents no consensus.
+Status: This is a draft and represents no consensus.
 
 ## Background
 
