@@ -25,15 +25,27 @@ Status: This is a draft and represents no consensus.
 
 ## Background
 
+### 3DS flows
+
+### How 3DS on the Web Works today
+
 ## Goals
 
 ### Non-Goals
 
 ## Flows
 
+## Scope
+
+* Where in the flow are we focused (e.g., step 4 of flow in section 3.3)
+
 ## Assumptions
 
 ## Requirements
+
+### User Experience
+
+### Privacy Requirements
 
 ## Questions
 
