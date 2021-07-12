@@ -13,17 +13,15 @@ Note: In this document we assume that SPC leverages FIDO Authentication.  We the
 
 ## Background
 
-SPC is designed to scale authentication across merchants, to be used
-within a wide range of payment methods (cards, open banking,
-proprietary payment methods, etc.), within a variety of authentication
-protocols, and to produce cryptographic evidence that the user has
-confirmed transaction details. 
-
-W3C is working closely with the FIDO Alliance, EMVCo, and other partners to achieve a number of benefits through SPC:
+SPC is being designed for use within a wide range of payment methods
+(cards, open banking, proprietary payment methods, etc.) and within a
+variety of authentication protocols (including, but not limited to,
+EMV® 3-D Secure). W3C is working closely with the FIDO Alliance,
+EMVCo, and other partners to achieve a number of benefits through SPC:
 
 * **Authentication Streamlined for Payment**. We expect SPC to build on the FIDO authentication experience in several ways, by further accelerating authentication (compared to one-time passcodes), requiring fewer user gestures, offering a predictable user experience across sites, and avoiding redirects.
 * **Scalable and Ubiquitous**. SPC supports streamlined authentication across multiple merchant sites following a single enrollment.
-* Simpler and more Secure Front-end Deployment. The browser (or secure hardware) manages the display of the payment confirmation experience, removing the need for other parties (e.g., issuing banks or payment apps) to do so. In addition, enabling payment service providers or others to authenticate the user can reduce the need to embed code provided by a Relying Party in a Web page, reducing security risks. Reducing the need for redirects should also simplify solutions.
+* **Simpler and more Secure Front-end Deployment**. The browser (or secure hardware) manages the display of the payment confirmation experience, removing the need for other parties (e.g., issuing banks or payment apps) to do so. In addition, enabling payment service providers or others to authenticate the user can reduce the need to embed code provided by a Relying Party in a Web page, reducing security risks. Reducing the need for redirects should also simplify solutions.
 * **Designed to Meet Regulatory Requirements**. The standardized payment confirmation user experience is designed to help entities fulfill regulatory requirements (e.g., strong customer authentication and dynamic linking under PSD2) and other customer authentication use cases.
 
 In this document we focus on the last point: how to use SPC to full
@@ -31,11 +29,11 @@ PDS2 requirements.
 
 ## Unique SPC Features
 
-The above benefits are grounded in a small number of unique features that distinguish SPC from "vanilla FIDO authentication":
+The above benefits are grounded in a small number of unique features that distinguish SPC from FIDO authentication "out of the box":
 
-* Browser-native UX for payment confirmation. The browser (or secure hardware) provides a consistent and efficient authentication UX across merchant sites and relying parties.
-* Cryptographic evidence. Payment confirmation generates cryptographic evidence of the user's confirmation of payment details.
-* Cross-origin authentication. With FIDO, the Relying Party that creates FIDO credentials is the only origin that can generate an assertion with those credentials to authenticate the user. With SPC, any origin can generate an assertion during a transaction even by leveraging another Relying Party's credentials.
+* **Browser-native UX for payment confirmation**. The browser (or secure hardware) provides a consistent and efficient authentication UX across merchant sites and relying parties.
+* **Cryptographic evidence**. Payment confirmation generates cryptographic evidence of the user's confirmation of payment details.
+* **Cross-origin authentication**. With FIDO, the Relying Party that creates FIDO credentials is the only origin that can generate an assertion with those credentials to authenticate the user. With SPC, any origin can generate an assertion during a transaction even by leveraging another Relying Party's credentials.
 
 These features are used to satisfied two key PSD2 requirements:
 
@@ -48,13 +46,12 @@ SPC consists of two phases: enrollment and authentication. The
 following flow diagram provides a general view of the parties involved
 in SPC Authentication. 
 
-SPC is being designed to be usable in a variety of payment
-systems. The flow diagram describes general roles. Each payment system
-will determine which parties play which roles. For example, when SPC
-is used with EMV® 3-D Secure, the Access Control Server (ACS) or
-issuing bank or card network might be the Relying Party. Or, within
-EMV® Secure Remote Commerce, the SRC System might be the Relying
-Party.
+The flow diagram describes general roles. Each specific payment
+ecosystem or authentication protocol will determine which parties play
+which roles. For example, when SPC is used with EMV® 3-D Secure, the
+Access Control Server (ACS) or issuing bank or card network might be
+the Relying Party. Or, within EMV® Secure Remote Commerce, the SRC
+System might be the Relying Party.
 
 <img src="spc-general.png" alt="General SPC Flow Diagram; PUML source available"/>
 
