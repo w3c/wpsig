@@ -92,6 +92,31 @@ Party:
 
 ## Detailed Evaluation of PSD2 Requirements and SPC
 
-For details about the requirements, see [Regulatory Technical Standards on strong customer authentication and secure communication under PSD2 ](https://www.eba.europa.eu/sites/default/documents/files/documents/10180/1761863/314bd4d5-ccad-47f8-bb11-84933e863944/Final%20draft%20RTS%20on%20SCA%20and%20CSC%20under%20PSD2%20%28EBA-RTS-2017-02%29.pdf) (23 February 2017 edition).
+The PSD2 requirements below are drawn from [Regulatory Technical Standards on strong customer authentication and secure communication under PSD2 ](https://www.eba.europa.eu/sites/default/documents/files/documents/10180/1761863/314bd4d5-ccad-47f8-bb11-84933e863944/Final%20draft%20RTS%20on%20SCA%20and%20CSC%20under%20PSD2%20%28EBA-RTS-2017-02%29.pdf) (23 February 2017 edition).
 
-Note: This evaluation approach is based on [How FIDO Standards Meet PSD2’s Regulatory Technical Standards Requirements On Strong Customer Authentication](https://fidoalliance.org/how_fido_meets_the_rts_requirements/) from the FIDO Alliance.
+Note: This evaluation approach is based on [How FIDO Standards Meet PSD2’s Regulatory Technical Standards Requirements On Strong Customer Authentication](https://fidoalliance.org/how_fido_meets_the_rts_requirements/) from the FIDO Alliance. Below, this document is identified as "FIDO-PSD2".
+
+### [RTS Chapter 1] General provisions
+
+#### [RTS Article 3] – Review of the Security Requirements
+
+| Article     | Requirement | How SPC Meets It |
+| ----------- | ----------- | ----------- |
+| Article 3.1
+| The implementation of the security measures referred to in
+Article 1 shall be documented, periodically tested, evaluated
+and audited in accordance with the applicable legal framework
+of the payment service provider by auditors with expertise in IT
+security and payments and operationally independent within or
+from the payment service provider
+| See FIDO-PSD2 for information about FIDO security certification.
+In addition, W3C provides publicly available tests for Web APIs
+to improve cross-browser interoperability. |
+
+
+
+### [RTS Chapter II] Security measures for the application of Strong Customer
+Authentication
+
+### [RTS Chapter IV] Confidentiality and integrity of the Payment Service User’s
+security credentials
