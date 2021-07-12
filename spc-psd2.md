@@ -3,19 +3,21 @@
 Status: This is a draft document without consensus. Questions? Ian Jacobs &lt;ij@w3.org>.
 
 [Secure Payment Confirmation
-(SPC)](https://github.com/w3c/secure-payment-confirmation) is a Web
-API to support streamlined authentication during a payment
-transaction. It is designed to scale authentication across merchants,
-to be used within a wide range of payment methods (cards, open
-banking, proprietary payment methods, etc.), within a variety of
-authentication protocols, and to produce cryptographic evidence that
-the user has confirmed transaction details.
-
-In this document we explain how SPC can be used to fulfill the Strong Customer Authentication (SCA) and Dynamic Linking requirements of Payment Services Directrive (PSD2).
+(SPC)](https://github.com/w3c/secure-payment-confirmation) is a new
+Web API to support streamlined authentication during a payment
+transaction. In this document we explain how SPC can be used to
+fulfill the Strong Customer Authentication (SCA) and Dynamic Linking
+requirements of Payment Services Directrive (PSD2).
 
 Note: In this document we assume that SPC leverages FIDO Authentication.  We therefore recommend familiarity with <a href="https://fidoalliance.org/">FIDO Authentication</a> and specifically the <a href="https://www.w3.org/Webauthn/">Web Authentication specification</a>.
 
 ## Background
+
+SPC is designed to scale authentication across merchants, to be used
+within a wide range of payment methods (cards, open banking,
+proprietary payment methods, etc.), within a variety of authentication
+protocols, and to produce cryptographic evidence that the user has
+confirmed transaction details. 
 
 W3C is working closely with the FIDO Alliance, EMVCo, and other partners to achieve a number of benefits through SPC:
 
