@@ -102,16 +102,7 @@ Note: This evaluation approach is based on [How FIDO Standards Meet PSD2’s Reg
 
 | Article     | Requirement | How SPC Meets It |
 | ----------- | ----------- | ----------- |
-| Article 3.1
-| The implementation of the security measures referred to in
-Article 1 shall be documented, periodically tested, evaluated
-and audited in accordance with the applicable legal framework
-of the payment service provider by auditors with expertise in IT
-security and payments and operationally independent within or
-from the payment service provider
-| See FIDO-PSD2 for information about FIDO security certification.
-In addition, W3C provides publicly available tests for Web APIs
-to improve cross-browser interoperability. |
+| Article 3.1 | The implementation of the security measures referred to in Article 1 shall be documented, periodically tested, evaluated and audited in accordance with the applicable legal framework of the payment service provider by auditors with expertise in IT security and payments and operationally independent within or from the payment service provider | See FIDO-PSD2 for information about FIDO security certification. In addition, W3C provides publicly available tests for Web APIs to improve cross-browser interoperability. |
 
 
 
