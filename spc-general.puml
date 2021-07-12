@@ -1,0 +1,87 @@
+@startuml
+
+autonumber
+hide footbox
+skinparam ParticipantPadding 20
+skinparam BoxPadding 10
+
+title General SPC Authentication Flow
+
+actor Consumer as Consumer
+participant Merchant as Merchant <<Website>>
+
+box "Web Browser Environment"
+  participant "Browser"
+  participant "Authenticator"
+end box
+
+participant "Relying Party" as RP
+
+note over Merchant
+  Merchant may use a PSP in this flow.
+end note
+Consumer->Merchant: Checkout Intent
+Merchant->Browser: Provide checkout experience
+Browser->Consumer: Prompt user to pay
+Consumer->Merchant: Click Pay Button
+group Instrument selection
+Merchant->Browser: Provide instrument selection UX
+note over Merchant, Browser
+  Examples: Web form, card on file
+end note
+Browser->Consumer: Prompt user to select instrument
+Consumer->Merchant: Select instrument
+end gorup
+group Authentication
+Merchant->RP: Request SPC Credentials associated with instrument
+note over RP
+  RP has instrument / SPC Credential ID bindings after prior enrollment
+end note
+RP->Merchant: Return SPC Credentials
+note over Merchant, Browser
+  If no SPC Credentials for instrument, merchant can authenticate differently
+end note
+Merchant->Browser: Call SPC
+note over Merchant, Browser
+  Input: Amount, currency, payee info, SPC Credential IDs, instrument info, unique challenge
+end note
+note over Merchant, Browser
+  Once SPC invoked, control leaves merchant environment; no opportunity to tamper with data.
+end note
+Browser->Consumer: Prompt user with native UX to authenticate to pay and show dynamic linking data.
+note over Browser, Authenticator
+  Browser may delegate display to authenticators for added security.
+end note
+Consumer->Browser: Agree to authenticate
+Browser->Authenticator: Request authentication
+note over Authenticator
+  Authenticator may be implemented in OS, Browser, external hardware, or combination.
+end note
+Authenticator->Consumer: Prompt the user to authenticate (e.g., biometric)
+Consumer->Authenticator: Authenticate
+alt#Gold #LightBlue Successful authentication
+    Authenticator->Authenticator: Sign amount, currency, payee, instrument info, challenge
+    note over Authenticator
+       SPC Assertion constitutes authentication code mandated by RTS. Signed
+       data is what user saw. Unchanged between display
+       and cryptographic signature.
+    end note
+    Authenticator -> Browser: SPC Assertion with signature over data
+else #Pink Failure
+    Authenticator -> Browser: Authentication Rejected
+end
+Browser->Merchant: Return authentication result
+end group
+group Authorization
+Merchant->RP: Request authorization
+note over RP
+  Relying Party is authoritative source of information and thus can
+  verify that signed data displayed to the user matches
+  what it knows on server (challenge, instrument info, etc.).
+end note
+RP->RP: Validation (using public key that is part of enrolled SPC Credential)
+RP->Merchant: Authorization response
+end group
+Merchant-->Consumer: Checkout Completed
+
+@enduml
