@@ -16,10 +16,10 @@ In this document we explain how SPC can be used to fulfill the Strong Customer A
 
 W3C is working closely with the FIDO Alliance, EMVCo, and other partners to achieve a number of benefits through SPC:
 
-* '''Authentication Streamlined for Payment'''. FIDO authentication provides a very good user experience. We expect SPC to build on that experience in several ways, by further accelerating authentication (compared to one-time passcodes), requiring fewer user gestures, offering a predictable user experience across sites, and avoiding redirects.
-* '''Scalable and Ubiquitous'''. SPC supports streamlined authentication across multiple merchant sites following a single enrollment.
+* **Authentication Streamlined for Payment**. FIDO authentication provides a very good user experience. We expect SPC to build on that experience in several ways, by further accelerating authentication (compared to one-time passcodes), requiring fewer user gestures, offering a predictable user experience across sites, and avoiding redirects.
+* **Scalable and Ubiquitous**. SPC supports streamlined authentication across multiple merchant sites following a single enrollment.
 * Simpler and more Secure Front-end Deployment. The browser (or secure hardware) manages the display of the payment confirmation experience, removing the need for other parties (e.g., issuing banks or payment apps) to do so. In addition, enabling payment service providers or others to authenticate the user can reduce the need to embed code provided by a Relying Party in a Web page, reducing security risks. Reducing the need for redirects should also simplify solutions.
-* '''Designed to Meet Regulatory Requirements'''. The standardized payment confirmation user experience is designed to help entities fulfill regulatory requirements (e.g., strong customer authentication and dynamic linking under PSD2) and other customer authentication use cases.
+* **Designed to Meet Regulatory Requirements**. The standardized payment confirmation user experience is designed to help entities fulfill regulatory requirements (e.g., strong customer authentication and dynamic linking under PSD2) and other customer authentication use cases.
 
 In this document we focus on the last point: how to use SPC to full
 PDS2 requirements.
