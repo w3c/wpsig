@@ -22,7 +22,8 @@ end box
 participant "Relying Party" as RP
 
 note over Authenticator
-  Authenticator may be implemented in OS, Browser, external hardware, or combination.
+  Authenticator may be implemented in OS, Browser,
+  external hardware, or combination.
 end note
 
 note over Merchant
