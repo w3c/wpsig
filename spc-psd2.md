@@ -139,8 +139,7 @@ Authentication
 | Article 9 (1) | Payment service providers shall ensure that the use of the elements of strong customer authentication referred to in Articles 6, 7 and 8 is subject to measures which ensure that, in terms of technology, algorithms and parameters, the breach of one of the elements does not compromise the reliability of the other elements. | This is achieved via FIDO; see FIDO-PSD2.
 | Articles 9.2 & 9.3 | Payment service providers shall adopt security measures, where any of the elements of strong customer authentication or the authentication code itself is used through a multi-purpose device, to mitigate the risk which would result from that multi-purpose device being compromised. For the purposes of paragraph 2, the mitigating measures shall include each of the following: (a) the use of separated secure execution environments through the software installed inside the multi-purpose device; (b) mechanisms to ensure that the software or device has not been altered by the payer or by a third party; (c) where alterations have taken place, mechanisms to mitigate the consequences thereof. | This is achieved via FIDO; see FIDO-PSD2.
 
-### [RTS Chapter IV] Confidentiality and integrity of the Payment Service User’s
-security credentials
+### [RTS Chapter IV] Confidentiality and integrity of the Payment Service User’s security credentials
 
 #### [RTS Article 22] – General Requirements
 
