@@ -37,7 +37,7 @@ Merchant->RP: Request SPC Credentials associated with instrument
 note over RP
   RP has instrument / SPC Credential ID bindings after prior enrollment
 end note
-RP->Merchant: Return SPC Credentials
+RP->Merchant: Return SPC Credentials (and possibly additional information for SPC call)
 note over Merchant, Browser
   If no SPC Credentials for instrument, merchant can authenticate differently
 end note
