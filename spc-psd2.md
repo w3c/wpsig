@@ -77,7 +77,7 @@ Party:
   as part of a risk assessment strategy. As an example of such a
   strategy, see [Technical Note: FIDO Authentication and EMV 3-D
   Secure – Using FIDO for Payment
-  Authentication](https://fidoalliance.org/technical-note-fido-authentication-and-emv-3-d-secure-using-fido-for-payment-authentication/) by the FIDO Alliance and [Use of FIDO  Data in 3-D Secure Messages](https://www.emvco.com/wp-content/uploads/documents/EMVCo_3DS_FIDOData-WPv1.0_20200710.pdf) by EMVCo.
+  Authentication](https://fidoalliance.org/technical-note-fido-authentication-and-emv-3-d-secure-using-fido-for-payment-authentication/) by the FIDO Alliance and [Use of FIDO Data in 3-D Secure Messages](https://www.emvco.com/wp-content/uploads/documents/EMVCo_3DS_FIDOData-WPv1.0_20200710.pdf) by EMVCo.
 
 ## SPC Used in Specific Authentication Protocols
 

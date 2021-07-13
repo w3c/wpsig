@@ -61,7 +61,7 @@ Browser->Authenticator: Request authentication
 note over Authenticator
   Authenticator may be implemented in OS, Browser, external hardware, or combination.
 end note
-Authenticator->Consumer: Prompt the user to authenticate (e.g., biometric)
+Authenticator->Consumer: Prompt user to authenticate (e.g., biometric)
 Consumer->Authenticator: Authenticate
 alt#Gold #LightBlue Successful authentication
     Authenticator->Authenticator: Sign amount, currency, payee, instrument info, challenge
