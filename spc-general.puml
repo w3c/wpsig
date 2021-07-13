@@ -11,7 +11,8 @@ actor Consumer as Consumer
 participant Merchant as Merchant <<Website>>
 
 box "Web Browser Environment"
-  participant "Browser"
+  participant "Browser Rendering Engine" as Browser
+  participant "Browser Native UX" as Native
   participant "Authenticator"
 end box
 
@@ -22,16 +23,16 @@ note over Merchant
 end note
 Consumer->Merchant: Checkout Intent
 Merchant->Browser: Provide checkout experience
-Browser->Consumer: Prompt user to pay
+Browser->Consumer: Render checkout experience
 Consumer->Merchant: Click Pay Button
 group Instrument selection
 Merchant->Browser: Provide instrument selection UX
 note over Merchant, Browser
   Examples: Web form, card on file
 end note
-Browser->Consumer: Prompt user to select instrument
+Browser->Consumer: Render instrument selection UX
 Consumer->Merchant: Select instrument
-end gorup
+end group
 group Authentication
 Merchant->RP: Request SPC Credentials associated with instrument
 note over RP
@@ -48,11 +49,11 @@ end note
 note over Merchant, Browser
   Once SPC invoked, control leaves merchant environment; no opportunity to tamper with data.
 end note
-Browser->Consumer: Prompt user with native UX to authenticate to pay and show dynamic linking data.
+Native->Consumer: Prompt user to authenticate to pay and show dynamic linking data.
 note over Browser, Authenticator
   Browser may delegate display to authenticators for added security.
 end note
-Consumer->Browser: Agree to authenticate
+Consumer->Native: Agree to authenticate
 Browser->Authenticator: Request authentication
 note over Authenticator
   Authenticator may be implemented in OS, Browser, external hardware, or combination.
