@@ -96,6 +96,8 @@ In the following sections we discuss how specific protocols are being modified f
 
 Status: EMVCo has indicated that they anticipate that EMV® 3-D Secure version 2.3 will include support for the request of SPC Credentials. It is likely that the usual authorization rails will support the communication of SPC Assertions.
 
+For related information, see [How Does EMV® 3-D Secure Help to Meet European Regulation While Supporting the Global Fight Against CNP Fraud?](https://www.emvco.com/emv_insights_post/how-does-emv-3-d-secure-help-to-meet-european-regulation-while-supporting-the-global-fight-against-cnp-fraud/)
+
 ### EMV Secure Remote Commerce
 
 Status: Discussion is ongoing, with an initial idea that each SRC System would play the role of the Relying Party for SPC authentication.
