@@ -80,15 +80,29 @@ Party:
   Authentication](https://fidoalliance.org/technical-note-fido-authentication-and-emv-3-d-secure-using-fido-for-payment-authentication/)
   by the FIDO Alliance.
 
-## SPC Used in Various Authentication Protocols
+## SPC Used in Specific Authentication Protocols
 
+As the flow diagram above illustrates, the following interactions take
+place between the merchant and the Relying Party during an SPC flow,
+and where a separate protocol will be used for the secure exchange of
+information:
 
+* The merchant asks the Relying Party for any SPC Credentials associated with a selected instrument.
+* The merchant provides the Relying Party with an SPC Assertion (following authentication) for validation.
+
+In the following sections we discuss how specific protocols are being modified for these purposes, or how they might be used.
 
 ### EMV 3-D Secure
 
+Status: EMVCo has indicated that they anticipate that EMV® 3-D Secure version 2.3 will include support for the request of SPC Credentials. It is likely that the usual authorization rails will support the communication of SPC Assertions.
+
 ### EMV Secure Remote Commerce
 
+Status: Discussion is ongoing, with an initial idea that each SRC System would play the role of the Relying Party for SPC authentication.
+
 ### Open Banking
+
+Status: Discussion is ongoing. See [Secure Payment Confirmation and Open Banking](https://docs.google.com/document/d/1qjBPa6l0EM9A3sLl9neccq_8UPHe90jXTGXqcbge2vQ/edit)
 
 ## Detailed Evaluation of PSD2 Requirements and SPC
 
