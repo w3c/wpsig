@@ -5,7 +5,7 @@ hide footbox
 skinparam ParticipantPadding 20
 skinparam BoxPadding 10
 
-title General SPC Authentication Flow
+title General SPC Authentication Flow During Checkout
 
 actor Consumer as Consumer
 participant Merchant as Merchant <<Website>>
