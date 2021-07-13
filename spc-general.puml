@@ -13,6 +13,9 @@ participant Merchant as Merchant <<Website>>
 box "Web Browser Environment"
   participant "Browser Rendering Engine" as Browser
   participant "Browser Native UX" as Native
+end box
+
+box "Authenticator Environment (Browser/OS)"
   participant "Authenticator"
 end box
 
