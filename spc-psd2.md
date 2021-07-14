@@ -1,9 +1,9 @@
 # Using SPC to fulfill PSD2 Requirements for SCA and Dynamic Linking
 
-Status: This is a draft document without consensus. Questions? Ian Jacobs &lt;ij@w3.org>.
+Status: This is a draft document without consensus. The Editor hopes that the Web Payment Security Interest Group will develop this document and publish an Interest Group Note. Questions? Ian Jacobs &lt;ij@w3.org>.
 
 [Secure Payment Confirmation
-(SPC)](https://github.com/w3c/secure-payment-confirmation) is a new
+(SPC)](https://github.com/w3c/secure-payment-confirmation) is a new (draft)
 Web API to support streamlined authentication during a payment
 transaction. In this document we explain how SPC can be used to
 fulfill the Strong Customer Authentication (SCA) and Dynamic Linking
