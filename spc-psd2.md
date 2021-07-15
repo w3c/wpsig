@@ -31,7 +31,7 @@ PDS2 requirements.
 
 The above benefits are grounded in a small number of unique features that distinguish SPC from FIDO authentication "out of the box":
 
-* **Browser-native UX for payment confirmation**. The browser (or secure hardware) provides a consistent and efficient authentication UX across merchant sites and relying parties.
+* **Browser-native UX for payment confirmation**. The browser (or secure hardware) provides a consistent and efficient authentication UX across merchant sites and relying parties. A browser-native user experience should modestly improve transaction security compared to ordinary Web content rendered in an iframe.
 * **Cryptographic evidence**. Payment confirmation generates cryptographic evidence of the user's confirmation of payment details.
 * **Cross-origin authentication**. With FIDO, the Relying Party that creates FIDO credentials is the only origin that can generate an assertion with those credentials to authenticate the user. With SPC, any origin can generate an assertion during a transaction even by leveraging another Relying Party's credentials.
 
