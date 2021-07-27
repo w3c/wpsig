@@ -20,11 +20,11 @@ EMV® 3-D Secure). W3C is working closely with the FIDO Alliance,
 EMVCo, and other partners to achieve a number of benefits through SPC:
 
 * **Authentication Streamlined for Payment**. We expect SPC to build on the FIDO authentication experience in several ways, by further accelerating authentication (compared to one-time passcodes), requiring fewer user gestures, offering a predictable user experience across sites, and avoiding redirects.
-* **Scalable and Ubiquitous**. SPC supports streamlined authentication across multiple merchant sites following a single enrollment.
+* **Scalable and Ubiquitous**. <a name="scale"></a> SPC supports streamlined authentication across multiple merchant sites following a single enrollment.
 * **Simpler and more Secure Front-end Deployment**. The browser (or secure hardware) manages the display of the payment confirmation experience, removing the need for other parties (e.g., issuing banks or payment apps) to do so. In addition, enabling payment service providers or others to authenticate the user can reduce the need to embed code provided by a Relying Party in a Web page, reducing security risks. Reducing the need for redirects should also simplify solutions.
 * **Designed to Meet Regulatory Requirements**. The standardized payment confirmation user experience is designed to help entities fulfill regulatory requirements (e.g., strong customer authentication and dynamic linking under PSD2) and other customer authentication use cases.
 
-In this document we focus on the last point: how to use SPC to full
+In this document we focus on the last point: how to use SPC to fulfill
 PDS2 requirements.
 
 ## Unique SPC Features
@@ -54,30 +54,6 @@ the Relying Party. Or, within EMV® Secure Remote Commerce, the SRC
 System might be the Relying Party.
 
 <img src="spc-general.png" alt="General SPC Flow Diagram; PUML source available"/>
-
-### SPC and Delegated Authentication
-
-As mentioned earlier, one design goal of SPC is to scale across
-merchants. The general SPC flow emphasizes this point: the user
-enrolls for SPC authentication once (e.g., with the issuing bank) and
-can then authenticate on any merchant site without re-enrolling.
-
-SPC can also be used in "delegated authentication" use cases, where
-the merchant (or their payment service provider) is the Relying
-Party. When the merchant or payment service provider, is the Relying
-Party:
-
-* The "native browser UX" and "cryptographic evidence" benefits of SPC
-  remain relevant, but there is likely to be less "scalability across
-  merchants."
-
-* Other parties in the payment ecosystem (e.g., the ACS in EMV® 3-D
-  Secure) may not be in a position to directly validate the
-  authentication results, but the authentication may still be useful
-  as part of a risk assessment strategy. As an example of such a
-  strategy, see [Technical Note: FIDO Authentication and EMV 3-D
-  Secure – Using FIDO for Payment
-  Authentication](https://fidoalliance.org/technical-note-fido-authentication-and-emv-3-d-secure-using-fido-for-payment-authentication/) by the FIDO Alliance and [Use of FIDO Data in 3-D Secure Messages](https://www.emvco.com/wp-content/uploads/documents/EMVCo_3DS_FIDOData-WPv1.0_20200710.pdf) by EMVCo.
 
 ## SPC Used in Specific Authentication Protocols
 
@@ -179,3 +155,29 @@ Authentication
 | Article     | Requirement | How SPC Meets It |
 | ----------- | ----------- | ----------- |
 | Article 27 | Payment service providers shall ensure that they have effective processes in place to apply each of the following security measures: (a) the secure destruction, deactivation or revocation of the personalised security credentials, authentication devices and software; (b) where the payment service provider distributes reusable authentication devices and software, the secure re-use of a device or software is established, documented and implemented before making it available to another payment services user; (c) the deactivation or revocation of information related to personalised security credentials stored in the payment service provider’s systems and databases and, where relevant, in public repositories.  | This is achieved via FIDO; see FIDO-PSD2. In addition, for any information stored in the browser related to an SPC implementation, browsers provide tools for lifecycle management (including deletion) of credentials.
+
+## FAQ
+
+### Can SPC be used with delegated authentication?
+
+[As mentioned above](#scale), one design goal of SPC is to scale across
+merchants. The general SPC flow emphasizes this point: the user
+enrolls for SPC authentication once (e.g., with the issuing bank) and
+can then authenticate on any merchant site without re-enrolling.
+
+SPC can also be used in "delegated authentication" use cases, where
+the merchant (or their payment service provider) is the Relying
+Party. When the merchant or payment service provider, is the Relying
+Party:
+
+* The "native browser UX" and "cryptographic evidence" benefits of SPC
+  remain relevant, but there is likely to be less "scalability across
+  merchants."
+
+* Other parties in the payment ecosystem (e.g., the ACS in EMV® 3-D
+  Secure) may not be in a position to directly validate the
+  authentication results, but the authentication may still be useful
+  as part of a risk assessment strategy. As an example of such a
+  strategy, see [Technical Note: FIDO Authentication and EMV 3-D
+  Secure – Using FIDO for Payment
+  Authentication](https://fidoalliance.org/technical-note-fido-authentication-and-emv-3-d-secure-using-fido-for-payment-authentication/) by the FIDO Alliance and [Use of FIDO Data in 3-D Secure Messages](https://www.emvco.com/wp-content/uploads/documents/EMVCo_3DS_FIDOData-WPv1.0_20200710.pdf) by EMVCo.
