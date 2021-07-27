@@ -77,15 +77,17 @@ else #Pink Failure
     Authenticator -> Browser: Authentication Rejected
 end
 Browser->Merchant: Return authentication result
-end group
-group Authorization
-Merchant->RP: Request authorization
+Merchant->RP: Communicate authentication result for verification
 note over RP
   Relying Party is authoritative source of information and thus can
   verify that signed data displayed to the user matches
   what it knows on server (challenge, instrument info, etc.).
 end note
 RP->RP: Validation (using public key that is part of enrolled SPC Credential)
+Merchant<-RP: Verification result
+end group
+group Authorization
+Merchant->RP: Request authorization
 RP->Merchant: Authorization response
 end group
 Merchant-->Consumer: Checkout Completed
