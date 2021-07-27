@@ -55,31 +55,23 @@ System might be the Relying Party.
 
 <img src="spc-general.png" alt="General SPC Flow Diagram; PUML source available"/>
 
-## SPC Used in Specific Authentication Protocols
+### SPC Integration into Backend Protocols
 
-As the flow diagram above illustrates, the following interactions take
-place between the merchant and the Relying Party during an SPC flow,
-and where a separate protocol will be used for the secure exchange of
-information:
+As the flow diagram indicates, during authentication the merchant
+interacts with the Relying Party at two moments:
 
-* The merchant asks the Relying Party for any SPC Credentials associated with a selected instrument.
-* The merchant provides the Relying Party with an SPC Assertion (following authentication) for validation.
+* To request any SPC Credentials associated with an instrument, and
+* To provide an SPC Assertion for verification.
 
-In the following sections we discuss how specific protocols are being modified for these purposes, or how they might be used.
+This communication may take place using a variety of protocols. At the present time, for example, we are discussing SPC integration with EMV® 3-D Secure, EMV® Secure Remote Commerce, and [Open Banking](https://docs.google.com/document/d/1qjBPa6l0EM9A3sLl9neccq_8UPHe90jXTGXqcbge2vQ/edit).
 
-### EMV 3-D Secure
+EMVCo has indicated that they anticipate that EMV® 3-D Secure version
+2.3 will include support for SPC. For related information, see [How
+Does EMV® 3-D Secure Help to Meet European Regulation While Supporting
+the Global Fight Against CNP
+Fraud?](https://www.emvco.com/emv_insights_post/how-does-emv-3-d-secure-help-to-meet-european-regulation-while-supporting-the-global-fight-against-cnp-fraud/)
 
-Status: EMVCo has indicated that they anticipate that EMV® 3-D Secure version 2.3 will include support for the request of SPC Credentials. It is likely that the usual authorization rails will support the communication of SPC Assertions.
-
-For related information, see [How Does EMV® 3-D Secure Help to Meet European Regulation While Supporting the Global Fight Against CNP Fraud?](https://www.emvco.com/emv_insights_post/how-does-emv-3-d-secure-help-to-meet-european-regulation-while-supporting-the-global-fight-against-cnp-fraud/)
-
-### EMV Secure Remote Commerce
-
-Status: Discussion is ongoing, with an initial idea that each SRC System would play the role of the Relying Party for SPC authentication.
-
-### Open Banking
-
-Status: Discussion is ongoing. See [Secure Payment Confirmation and Open Banking](https://docs.google.com/document/d/1qjBPa6l0EM9A3sLl9neccq_8UPHe90jXTGXqcbge2vQ/edit)
+## Security Analysis
 
 ## Detailed Evaluation of PSD2 Requirements and SPC
 
