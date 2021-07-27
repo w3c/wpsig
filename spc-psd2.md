@@ -31,14 +31,15 @@ PDS2 requirements.
 
 The above benefits are grounded in a small number of unique features that distinguish SPC from FIDO authentication "out of the box":
 
-* **Browser-native UX for payment confirmation**. The browser (or secure hardware) provides a consistent and efficient authentication UX across merchant sites and relying parties. A browser-native user experience should modestly improve transaction security compared to ordinary Web content rendered in an iframe.
-* **Cryptographic evidence**. Payment confirmation generates cryptographic evidence of the user's confirmation of payment details.
-* **Cross-origin authentication**. With FIDO, the Relying Party that creates FIDO credentials is the only origin that can generate an assertion with those credentials to authenticate the user. With SPC, any origin can generate an assertion during a transaction even by leveraging another Relying Party's credentials.
+* **Browser-native UX for payment confirmation**. <a name="spc-ux"></a> The browser (or secure hardware) provides a consistent and efficient authentication UX across merchant sites and relying parties. A browser-native user experience should modestly improve transaction security compared to ordinary Web content rendered in an iframe.
+* **Cryptographic evidence**. <a name="spc-crypto-evidence"></a> Payment confirmation generates cryptographic evidence of the user's confirmation of payment details.
+* **Third-Party Enrollment**. <a name="spc-3p-enrollment"></a> With FIDO, it is possible to authenticate from a cross-origin iframe, but one must register an authenticator in a first party context. With SPC, it is possible to register an authenticator from a cross-origin iframe, which is a common payment ecosystem use cases.
+* **Cross-origin authentication**. <a name="spc-cross-origin"></a> With FIDO, the Relying Party that creates FIDO credentials is the only origin that can generate an assertion with those credentials to authenticate the user. With SPC, any origin can generate an assertion during a transaction even by leveraging another Relying Party's credentials.
 
 These features are used to satisfied two key PSD2 requirements:
 
-* **Strong Customer Authentication (SCA)**:FIDO Authentication is used to fulfill the SCA requirement. SPC's cross-origin authentication reduces user experience friction by requiring fewer enrollments.
-* **Dynamic linking**: SPC adds to browsers built-in support for the display of dynamic linking data and cryptographic proof (via FIDO) of what data was displayed.
+* **Strong Customer Authentication (SCA)**: <a name="psd2-sca"></a>FIDO Authentication is used to fulfill the SCA requirement. SPC's cross-origin authentication reduces user experience friction by requiring fewer enrollments.
+* **Dynamic linking**: <a name="psd2-dl"></a> SPC adds to browsers built-in support for the display of dynamic linking data and cryptographic proof (via FIDO) of what data was displayed.
 
 ## General SPC Flow
 
@@ -72,6 +73,42 @@ the Global Fight Against CNP
 Fraud?](https://www.emvco.com/emv_insights_post/how-does-emv-3-d-secure-help-to-meet-european-regulation-while-supporting-the-global-fight-against-cnp-fraud/)
 
 ## Security Analysis
+
+SPC leverages FIDO Authentication and builds on FIDO security properties described in the [FIDO Security Reference](https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-security-ref-v2.0-id-20180227.html). The SPC analysis builds on and refers to that work.
+
+### Security Goals
+
+SPC is especially concerned with the following security goals identified in the FIDO Security Reference:
+
+* [SG-1] Strong User Authentication: Authenticate (i.e., recognize) a user and/or a device to a relying party with high (cryptographic) strength. This is the goal most closely related to the [PSD2 SCA requirement](#psd2-sca). 
+* [SG-14] Transaction Non-Repudiation: Provide strong cryptographic non-repudiation for secure transactions. This is the goal most closely related to the [PSD2 dynamic linking requirement](#psd2-dl).
+
+Note:
+
+* SPC focuses on user authentication. SPC may also help Relying Parties protect against other forms of fraud (e.g., fradulent merchants) but payments systems manage those risks through other mechanisms as well.
+
+### Security Measures
+
+SPC builds on the Security Measures described in the FIDO Security Reference. This table maps SPC features to the most relevant FIDO security measures:
+
+| FIDO Security Measure | SPC Feature(s) |
+| --------------------- | ----------- |
+| [SM-5] User Consent   | [browser-native UX for payment confirmation](#spc-ux) | [SM-10] Transaction Confirmation | [browser-native UX for payment confirmation](#spc-ux); [cryptographic evidence](#spc-crypto-evidence) |
+| [SM-14] AppID Separation | [cross-origin authentication](#spc-cross-origin). SPC explicitly relaxes this constraint compared to FIDO. |
+
+### Security Assumptions <a name="security-assumptions"></a>
+
+SPC security relies on all of the assumptions identified in the FIDO Security Reference. We highlight the following assumptions that are particularly relevant to implementation of SPC in browsers:
+
+* [SA-1] The Authenticator and its cryptographic algorithms and parameters (key size, mode, output length, etc.) in use are not subject to unknown weaknesses that make them unfit for their purpose in encrypting, digitally signing, and authenticating messages. (Thus, the SPC Assertion resists tampering between when it leaves the browser and when the Relying Party verifies it and ensures it meets Relying Party expectations.)
+* [SA-3] Applications on the user device are able to establish secure channels that provide trustworthy server authentication, and confidentiality and integrity for messages (e.g., through TLS). 
+* [SA-4] The computing environment on the FIDO user device and the and applications involved in a FIDO operation act as trustworthy agents of the user. 
+* [SA-6] The computing resources at the Relying Party involved in processing a FIDO operation act as trustworthy agents of the Relying Party.
+
+In particular, we make the following assumptions specific to SPC:
+
+* [SPC-SA-1] <a name="spc-sa-1"></a> Display integrity: Once SPC has been called, code running in the browser (e.g., in the JavaScript environment) cannot tamper with the display of transaction information by the browser (or authenticator).
+* [SPC-SA-2] <a name="spc-sa-2"></a> Signing integrity: The transaction information displayed by the browser (or authenticator) is the same information that is signed by the authenticator.
 
 ## Detailed Evaluation of PSD2 Requirements and SPC
 
@@ -173,3 +210,16 @@ Party:
   strategy, see [Technical Note: FIDO Authentication and EMV 3-D
   Secure – Using FIDO for Payment
   Authentication](https://fidoalliance.org/technical-note-fido-authentication-and-emv-3-d-secure-using-fido-for-payment-authentication/) by the FIDO Alliance and [Use of FIDO Data in 3-D Secure Messages](https://www.emvco.com/wp-content/uploads/documents/EMVCo_3DS_FIDOData-WPv1.0_20200710.pdf) by EMVCo.
+
+### Can we trust SPC in the browser?
+
+We address this question in parts:
+
+* The operating system has been compromised. Trust nothing!
+* The browser has been compromised. Trust nothing in the browser "equally," including password collection, iframes, SPC, and any other browser capability.
+* A merchant Web site has been compromised.
+
+For this last scenario, SPC offers several benefits: 
+
+* SPC moves the display of transaction information into a more trusted environment than code running in the browser (see [SPC-SA-1](#spc-sa-1) and [SPC-SA-2](#spc-sa-2)).
+* Because the Relying Party is the authoritative source of information about the user's payment instruments and authentication credentials, if it receives an SPC assertion from a compromised merchant, it can detect bad data and refuse to authorize the transaction.
