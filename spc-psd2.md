@@ -93,7 +93,8 @@ SPC builds on the Security Measures described in the FIDO Security Reference. Th
 
 | FIDO Security Measure | SPC Feature(s) |
 | --------------------- | ----------- |
-| [SM-5] User Consent   | [browser-native UX for payment confirmation](#spc-ux) | [SM-10] Transaction Confirmation | [browser-native UX for payment confirmation](#spc-ux); [cryptographic evidence](#spc-crypto-evidence) |
+| [SM-5] User Consent   | [browser-native UX for payment confirmation](#spc-ux) |
+| [SM-10] Transaction Confirmation | [browser-native UX for payment confirmation](#spc-ux); [cryptographic evidence](#spc-crypto-evidence) |
 | [SM-14] AppID Separation | [cross-origin authentication](#spc-cross-origin). SPC explicitly relaxes this constraint compared to FIDO. |
 
 ### Security Assumptions <a name="security-assumptions"></a>
