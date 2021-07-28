@@ -81,7 +81,7 @@ SPC leverages FIDO Authentication and builds on FIDO security properties describ
 SPC is especially concerned with the following security goals identified in the FIDO Security Reference:
 
 * [SG-1] Strong User Authentication: Authenticate (i.e., recognize) a user and/or a device to a relying party with high (cryptographic) strength. This is the goal most closely related to the [PSD2 SCA requirement](#psd2-sca). 
-* [SG-14] Transaction Non-Repudiation: Provide strong cryptographic non-repudiation for secure transactions. This is the goal most closely related to the [PSD2 dynamic linking requirement](#psd2-dl).
+* [SG-14] Transaction Non-Repudiation: Provide strong cryptographic non-repudiation for secure transactions. This is the goal most closely related to the [PSD2 dynamic linking requirement](#psd2-dl). The SPC assertion is created upon positive user verification and thus represents the customer’s acknowledgement and consent of the transaction details.
 
 Note:
 
