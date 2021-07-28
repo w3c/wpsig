@@ -224,3 +224,5 @@ For this last scenario, SPC offers several benefits:
 
 * SPC moves the display of transaction information into a more trusted environment than code running in the browser (see [SPC-SA-1](#spc-sa-1) and [SPC-SA-2](#spc-sa-2)).
 * Because the Relying Party is the authoritative source of information about the user's payment instruments and authentication credentials, if it receives an SPC assertion from a compromised merchant, it can detect bad data and refuse to authorize the transaction.
+
+As part of the W3C Process, we will provide a publicly available test suite to demonstrate interoperable (and correct) implementation of the SPC specification.
