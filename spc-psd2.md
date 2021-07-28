@@ -79,6 +79,7 @@ SPC leverages FIDO Authentication and builds on FIDO security properties describ
 Note:
 
 * Bracketed labels such as "[SG-1]" are defined in the [FIDO Security Reference](https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-security-ref-v2.0-id-20180227.html). However, labels that begin with "SPC" are defined in this document.
+* See also: [FIDO Certification Program](https://fidoalliance.org/certification/) for information about certification of FIDO servers, clients, and authenticators.
 
 ### Security Goals
 
@@ -230,5 +231,3 @@ For this last scenario, SPC offers several benefits:
 * Because the Relying Party is the authoritative source of information about the user's payment instruments and authentication credentials, if it receives an SPC assertion from a compromised merchant, it can detect bad data and refuse to authorize the transaction.
 
 As part of the W3C Process, we will provide a publicly available test suite to demonstrate interoperable (and correct) implementation of the SPC specification.
-
-See also: [FIDO Certification Program](https://fidoalliance.org/certification/).
