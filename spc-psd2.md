@@ -76,6 +76,10 @@ Fraud?](https://www.emvco.com/emv_insights_post/how-does-emv-3-d-secure-help-to-
 
 SPC leverages FIDO Authentication and builds on FIDO security properties described in the [FIDO Security Reference](https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-security-ref-v2.0-id-20180227.html). The SPC analysis builds on and refers to that work.
 
+Note:
+
+* Bracketed labels such as "[SG-1]" are defined in the [FIDO Security Reference](https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-security-ref-v2.0-id-20180227.html). However, labels that begin with "SPC" are defined in this document.
+
 ### Security Goals
 
 SPC is especially concerned with the following security goals identified in the FIDO Security Reference:
