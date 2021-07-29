@@ -222,7 +222,7 @@ Party:
 We address this question in parts:
 
 * The operating system has been compromised. Trust nothing!
-* The browser has been compromised. Trust nothing in the browser "equally," including password collection, iframes, SPC, and any other browser capability.
+* The browser has been compromised. Trust nothing in the browser, but do so "equally": password collection, iframes, SPC, and any other browser capability. In this scenario, SPC is no less secure than any other browser feature.
 * A merchant Web site has been compromised.
 
 For this last scenario, SPC offers several benefits: 
