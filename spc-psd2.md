@@ -222,7 +222,7 @@ Party:
 We address this question in parts:
 
 * The operating system has been compromised. Trust nothing!
-* The browser has been compromised. Trust nothing in the browser, but do so "equally": password collection, iframes, SPC, and any other browser capability. In this scenario, SPC is no less secure than any other browser feature.
+* The browser has been compromised. Trust nothing in the browser, but do so "equally" for features such as password collection, iframes, or SPC. In this scenario, SPC is no less secure than any other browser feature.
 * A merchant Web site has been compromised.
 
 For this last scenario, SPC offers several benefits: 
@@ -231,3 +231,5 @@ For this last scenario, SPC offers several benefits:
 * Because the Relying Party is the authoritative source of information about the user's payment instruments and authentication credentials, if it receives an SPC assertion from a compromised merchant, it can detect bad data and refuse to authorize the transaction.
 
 As part of the W3C Process, we will provide a publicly available test suite to demonstrate interoperable (and correct) implementation of the SPC specification.
+
+For more information about the security of a particular browser on a particular operating system, please consult the relevant documentation about requirements, testing, certification, and good practices within that ecosystem.
