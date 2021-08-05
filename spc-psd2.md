@@ -217,19 +217,31 @@ Party:
   Secure – Using FIDO for Payment
   Authentication](https://fidoalliance.org/technical-note-fido-authentication-and-emv-3-d-secure-using-fido-for-payment-authentication/) by the FIDO Alliance and [Use of FIDO Data in 3-D Secure Messages](https://www.emvco.com/wp-content/uploads/documents/EMVCo_3DS_FIDOData-WPv1.0_20200710.pdf) by EMVCo.
 
-### Can we trust SPC in the browser?
+### Can we trust browser-based authentication?
 
-We address this question in parts:
+With SPC, the browser component is part of the trusted computing base,
+just as the operating system is part of the trusted computing base for
+native payment apps. Neither is inherently insecure.
 
-* The operating system has been compromised. Trust nothing!
-* The browser has been compromised. Trust nothing in the browser, but do so "equally" for features such as password collection, iframes, or SPC. In this scenario, SPC is no less secure than any other browser feature.
-* A merchant Web site has been compromised.
+Because browsers are used for significant sensitive and high-value
+commercial activity, there is substantial and adversarial testing of
+browser security. End-users can more easily trust their browser than
+they can trust or assess the security of multiple third-party
+applications. Furthermore, the browser can help protect both users and
+those with whom they do business from risks of spoofing and
+compromise. For example, SPC moves the display of transaction
+information into a more trusted environment than code running in the
+browser (see [SPC-SA-1](#spc-sa-1) and [SPC-SA-2](#spc-sa-2)), to help
+reduce the risk of spoofing.
 
-For this last scenario, SPC offers several benefits: 
+In the end, the Relying Party remains the authoritative source of
+information about the user's payment instruments and authentication
+credentials. A Relying Party can detect bad data upon verification of
+an SPC credential and refuse to authorize a transaction.
 
-* SPC moves the display of transaction information into a more trusted environment than code running in the browser (see [SPC-SA-1](#spc-sa-1) and [SPC-SA-2](#spc-sa-2)).
-* Because the Relying Party is the authoritative source of information about the user's payment instruments and authentication credentials, if it receives an SPC assertion from a compromised merchant, it can detect bad data and refuse to authorize the transaction.
-
-As part of the W3C Process, we will provide a publicly available test suite to demonstrate interoperable (and correct) implementation of the SPC specification.
-
-For more information about the security of a particular browser on a particular operating system, please consult the relevant documentation about requirements, testing, certification, and good practices within that ecosystem.
+As part of the W3C Process, a publicly available test suite can be
+used to demonstrate interoperable (and correct) implementation of the
+SPC specification.  For more information about the security of a
+particular browser on a particular operating system, please consult
+the relevant documentation about requirements, testing, certification,
+and good practices within that ecosystem.
