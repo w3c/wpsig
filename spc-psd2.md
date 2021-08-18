@@ -21,7 +21,7 @@ EMVCo, and other partners to achieve a number of benefits through SPC:
 
 * **Authentication Streamlined for Payment**. We expect SPC to build on the FIDO authentication experience in several ways, by further accelerating authentication (compared to one-time passcodes), requiring fewer user gestures, offering a predictable user experience across sites, and avoiding redirects.
 * **Scalable and Ubiquitous**. <a name="scale"></a> SPC supports streamlined authentication across multiple merchant sites following a single enrollment.
-* **Simpler and more Secure Front-end Deployment**. The browser (or secure hardware) manages the display of the payment confirmation experience, removing the need for other parties (e.g., issuing banks or payment apps) to do so. In addition, enabling payment service providers or others to authenticate the user can reduce the need to embed code provided by a Relying Party in a Web page, reducing security risks. Reducing the need for redirects should also simplify solutions.
+* **Simpler and more Secure Front-end Deployment**. The browser manages the display of the payment confirmation experience, removing the need for other parties (e.g., issuing banks or payment apps) to do so. In addition, enabling payment service providers or others to authenticate the user can reduce the need to embed code provided by a Relying Party in a Web page, reducing security risks. Reducing the need for redirects should also simplify solutions.
 * **Designed to Meet Regulatory Requirements**. The standardized payment confirmation user experience is designed to help entities fulfill regulatory requirements (e.g., strong customer authentication and dynamic linking under PSD2) and other customer authentication use cases.
 
 In this document we focus on the last point: how to use SPC to fulfill
@@ -52,7 +52,8 @@ ecosystem or authentication protocol will determine which parties play
 which roles. For example, when SPC is used with EMV® 3-D Secure, the
 Access Control Server (ACS) or issuing bank or card network might be
 the Relying Party. Or, within EMV® Secure Remote Commerce, the SRC
-System might be the Relying Party.
+System might be the Relying Party. Or, within open banking flows,
+the ASPSP might be the Relying Party.
 
 <img src="spc-general.png" alt="General SPC Flow Diagram; PUML source available"/>
 
@@ -104,7 +105,9 @@ SPC builds on the Security Measures described in the FIDO Security Reference. Th
 
 ### Security Assumptions <a name="security-assumptions"></a>
 
-SPC security relies on all of the assumptions identified in the FIDO Security Reference. We highlight the following assumptions that are particularly relevant to implementation of SPC in browsers:
+An SPC security analysis begins with a security analysis of the underlying
+FIDO system. The following assumptions identified in the FIDO Security Reference
+are particularly relevant as background to evaluating SPC:
 
 * [SA-1] The Authenticator and its cryptographic algorithms and parameters (key size, mode, output length, etc.) in use are not subject to unknown weaknesses that make them unfit for their purpose in encrypting, digitally signing, and authenticating messages. (Thus, the SPC Assertion resists tampering between when it leaves the browser and when the Relying Party verifies it and ensures it meets Relying Party expectations.)
 * [SA-3] Applications on the user device are able to establish secure channels that provide trustworthy server authentication, and confidentiality and integrity for messages (e.g., through TLS). 
@@ -113,8 +116,8 @@ SPC security relies on all of the assumptions identified in the FIDO Security Re
 
 In particular, we make the following assumptions specific to SPC:
 
-* [SPC-SA-1] <a name="spc-sa-1"></a> Display integrity: Once SPC has been called, code running in the browser (e.g., in the JavaScript environment) cannot tamper with the display of transaction information by the browser (or authenticator).
-* [SPC-SA-2] <a name="spc-sa-2"></a> Signing integrity: The transaction information displayed by the browser (or authenticator) is the same information that is signed by the authenticator.
+* [SPC-SA-1] <a name="spc-sa-1"></a> Display integrity: Once SPC has been called, code running in the browser (e.g., in the JavaScript environment) cannot tamper with the display of transaction information by the browser.
+* [SPC-SA-2] <a name="spc-sa-2"></a> Signing integrity: The transaction information displayed by the browser is the same information that is signed by the authenticator.
 
 ## Detailed Evaluation of PSD2 Requirements and SPC
 
@@ -128,7 +131,8 @@ Note: This evaluation approach is based on [How FIDO Standards Meet PSD2’s Reg
 
 | Article     | Requirement | How SPC Meets It |
 | ----------- | ----------- | ----------- |
-| Article 3.1 | The implementation of the security measures referred to in Article 1 shall be documented, periodically tested, evaluated and audited in accordance with the applicable legal framework of the payment service provider by auditors with expertise in IT security and payments and operationally independent within or from the payment service provider | See FIDO-PSD2 for information about FIDO security certification. In addition, W3C provides publicly available tests for Web APIs to improve cross-browser interoperability. |
+| Article 3.1 | The implementation of the security measures referred to in Article 1 shall be documented, periodically tested, evaluated and audited in accordance with the applicable legal framework of the payment service provider by auditors with expertise in IT security and payments and operationally independent within or from the payment service provider | See FIDO-PSD2 for information about FIDO security certification. In addition, W3C provides publicly available tests for Web APIs to improve cross-browser interoperability.
+| Article 3.3 | The audit review shall evaluate and report on the compliance of the payment service provider’s security measures with the requirements set out in this Regulation. |  See FIDO-PSD2 for information about FIDO security certification. W3C provides publicly available tests for Web APIs to improve cross-browser interoperability. |
 
 ### [RTS Chapter II] Security measures for the application of Strong Customer
 Authentication
@@ -217,13 +221,33 @@ Party:
   Secure – Using FIDO for Payment
   Authentication](https://fidoalliance.org/technical-note-fido-authentication-and-emv-3-d-secure-using-fido-for-payment-authentication/) by the FIDO Alliance and [Use of FIDO Data in 3-D Secure Messages](https://www.emvco.com/wp-content/uploads/documents/EMVCo_3DS_FIDOData-WPv1.0_20200710.pdf) by EMVCo.
 
-### Can we trust browser-based authentication?
+### How can one test and evaluate an SPC-based solution (in light of Article 3)?
 
-With SPC, the browser component is part of the trusted computing base,
-just as the operating system is part of the trusted computing base for
-native payment apps. Neither is inherently insecure.
+An SPC-based solution consists of the following components:
 
-Because browsers are used for significant sensitive and high-value
+* The FIDO Authenticator
+* The browser
+* The PSP application/environment
+* The means used to exchange credentials and assertions (e.g., via EMV® 3-D
+  Secure or a different protocol or proprietary channels).
+* The network connection
+
+Independent labs can evaluate the code, documentation, test suites, third-party tools, and certification processes associated with these components. For FIDO authenticators, please see the [FIDO Alliance's certification process](https://fidoalliance.org/certification/).
+
+For the browser component specifically, we recommend the following:
+
+* Start with specifications for specific features, including [Secure Payment Confirmation](https://w3c.github.io/secure-payment-confirmation/), [Web Authentication](https://w3c.github.io/webauthn/), and [Client to Authenticator Protocol (CTAP)](https://fidoalliance.org/specifications/download/). The specifications are important to understanding which aspects of underlying code are relevant to a security evaluation. Specifications generally include "Security Considerations" sections.
+* The W3C community develops [publicly available test suites](http://web-platform-tests.org/) to promote interoperable and correct implementations of its specifications. Independent labs may validate expected browser behavior using these test suites.
+* To evaluate an individual browser, we recommend contacting the browser vendor and locating testing and good practices resources the vendor may provide for this purpose. In most cases, browser code is available as an open source project that can evaluated independently.
+
+Regarding the integrity and security of SPC communications, please note
+the following:
+
+* The Relying Party remains the authoritative source of information
+about the user's payment instruments and authentication credentials. A
+Relying Party can detect bad data upon verification of an SPC
+credential and refuse to authorize a transaction.
+* Because browsers are used for significant sensitive and high-value
 commercial activity, there is substantial and adversarial testing of
 browser security. End-users can more easily trust their browser than
 they can trust or assess the security of multiple third-party
@@ -233,15 +257,3 @@ compromise. For example, SPC moves the display of transaction
 information into a more trusted environment than code running in the
 browser (see [SPC-SA-1](#spc-sa-1) and [SPC-SA-2](#spc-sa-2)), to help
 reduce the risk of spoofing.
-
-In the end, the Relying Party remains the authoritative source of
-information about the user's payment instruments and authentication
-credentials. A Relying Party can detect bad data upon verification of
-an SPC credential and refuse to authorize a transaction.
-
-As part of the W3C Process, a publicly available test suite can be
-used to demonstrate interoperable (and correct) implementation of the
-SPC specification.  For more information about the security of a
-particular browser on a particular operating system, please consult
-the relevant documentation about requirements, testing, certification,
-and good practices within that ecosystem.

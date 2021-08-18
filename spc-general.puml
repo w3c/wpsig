@@ -7,7 +7,7 @@ skinparam BoxPadding 10
 
 title General SPC Authentication Flow During Checkout
 
-actor Consumer as Consumer
+actor Consumer as Consumer <<PSU>>
 participant Merchant as Merchant <<Website>>
 
 box "Web Browser Environment"
@@ -27,7 +27,15 @@ note over Authenticator
 end note
 
 note over Merchant
-  Merchant may use a PSP in this flow.
+  Merchant may use a PSP / PISP in this flow.
+end note
+note over RP
+  The Relying Party may be a variety of parties,
+  including the Issuing Bank/ASPSP, or a delegate
+  (e.g., ACS), or the payment service provider/PISP, or
+  another entity. We anticipate industry
+  adoption speeds and use cases will lead to different
+  configurations.
 end note
 Consumer->Merchant: Checkout Intent
 Merchant->Browser: Provide checkout experience
@@ -62,7 +70,7 @@ note over Browser, Authenticator
   Browser may delegate display to authenticators for added security.
 end note
 Consumer->Native: Agree to authenticate
-Browser->Authenticator: Request authentication
+Native->Authenticator: Request authentication
 Authenticator->Consumer: Prompt user to authenticate (e.g., biometric)
 Consumer->Authenticator: Authenticate
 alt#Gold #LightBlue Successful authentication
