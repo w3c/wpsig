@@ -49,11 +49,13 @@ in SPC Authentication.
 
 The flow diagram describes general roles. Each specific payment
 ecosystem or authentication protocol will determine which parties play
-which roles. For example, when SPC is used with EMV® 3-D Secure, the
-Access Control Server (ACS) or issuing bank or card network might be
-the Relying Party. Or, within EMV® Secure Remote Commerce, the SRC
-System might be the Relying Party. Or, within open banking flows,
-the ASPSP might be the Relying Party.
+which roles, including:
+
+* Account Provider (e.g., ASPSP, or issuing bank, or ACS with EMV® 3-D Secure, or SRC System with EMV® Secure Remote Commerce)
+* Payment Service Provider (e.g., PISP)
+* Merchant (see FAQ question below on delegation use case)
+
+The centrality of the Relying Party in a payment system has an impact on SPC's scalability.
 
 <img src="spc-general.png" alt="General SPC Flow Diagram; PUML source available"/>
 
