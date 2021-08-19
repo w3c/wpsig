@@ -240,7 +240,7 @@ For the browser component specifically, we recommend the following:
 
 * Start with specifications for specific features, including [Secure Payment Confirmation](https://w3c.github.io/secure-payment-confirmation/), [Web Authentication](https://w3c.github.io/webauthn/), and [Client to Authenticator Protocol (CTAP)](https://fidoalliance.org/specifications/download/). The specifications are important to understanding which aspects of underlying code are relevant to a security evaluation. Specifications generally include "Security Considerations" sections.
 * The W3C community develops [publicly available test suites](http://web-platform-tests.org/) to promote interoperable and correct implementations of its specifications. Independent labs may validate expected browser behavior using these test suites.
-* To evaluate an individual browser, we recommend contacting the browser vendor and locating testing and good practices resources the vendor may provide for this purpose. In most cases, browser code is available as an open source project that can evaluated independently.
+* To evaluate an individual browser, we recommend contacting the browser vendor and locating testing and good practices resources the vendor may provide for this purpose. In most cases, browser engine code is available as an open source project that can evaluated independently.
 
 Regarding the integrity and security of SPC communications, please note
 the following:
