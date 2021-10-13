@@ -51,15 +51,15 @@ Examples of high risk transactions include
 
 ![3DS flows](3ds-flows.png)
 
-* Start: Cardholder—The Cardholder initiates the transaction using a browser on a Consumer Device using a website operated by the 3DS Requestor.
-* 1.1 3DS Requestor and 3DS Server—The 3DS Requestor communicates with the 3DS Server. The 3DS Server determines the ACS and DS Protocol Version(s) and, if present obtains the 3DS Method URL for the requested card range and returns the information to the 3DS Requestor. The ACS and DS Protocol Version(s) and 3DS Method URL data were previously received by the 3DS Server via a PRes message.
-* 1.2 3DS Method on the 3DS Requestor checkout page—The 3DS Requestor checkout page loads the 3DS Method URL, if present, which allows the ACS to obtain additional browser information for risk-based decisioning.
-* 1.3 3DS Requestor and 3DS Server—The 3DS Requestor provides the necessary 3-D Secure information for the transaction to the 3DS Server.
-* 4. 3DS Server and 3DS Requestor—The 3DS Server communicates the result of the ARes message to the 3DS Requestor and completes the transaction. The 3DS Integrator determines how the interaction between these components is implemented.
+* **Start**: Cardholder—The Cardholder initiates the transaction using a browser on a Consumer Device using a website operated by the 3DS Requestor.
+* **1.1**: 3DS Requestor and 3DS Server—The 3DS Requestor communicates with the 3DS Server. The 3DS Server determines the ACS and DS Protocol Version(s) and, if present obtains the 3DS Method URL for the requested card range and returns the information to the 3DS Requestor. The ACS and DS Protocol Version(s) and 3DS Method URL data were previously received by the 3DS Server via a PRes message.
+* **1.2**: 3DS Method on the 3DS Requestor checkout page—The 3DS Requestor checkout page loads the 3DS Method URL, if present, which allows the ACS to obtain additional browser information for risk-based decisioning.
+* **1.3**: 3DS Requestor and 3DS Server—The 3DS Requestor provides the necessary 3-D Secure information for the transaction to the 3DS Server.
+* **4**: 3DS Server and 3DS Requestor—The 3DS Server communicates the result of the ARes message to the 3DS Requestor and completes the transaction. The 3DS Integrator determines how the interaction between these components is implemented.
 
 ## The Question
 
-Is this the same device, the user has been associated with?
+Is this the same device the user has been associated with?
 
 ### The Answer (Devices supporting SDKs)
 
@@ -74,8 +74,8 @@ For transactions taking place on devices/platforms that support SDKs, the device
 
 Data related to the browser being used to perform EMV 3DS transactions is collected via 2 channels
 
-* 3DSMethod – This is a mechanism for the issuer/ACS to obtain additional browser data prior to authentication request flow. This browser data in addition to the other information available to the ACS/Issuer through authentication flow aids in the transaction risk assessment and associated decision on completing the transaction as frictionless or asking for additional user credentials through a step-up/challenge. 3DSMethod is a javascript executed on the browser and is owned and maintained by the Issuer/ACS and it is made available to the browser through a trusted party in the EMV 3DS Flow called as 3DS Server. The data collected by this method is proprietary to each issuer/ACS as determined by their risk engines.
-* Browser Data in Authentication Request (AReq). This is the mechanism by which a list of browser data is carried through the EMV 3DS AReq data elements. This information in addition to the data issuer/ACS might have collected as part of 3DSMethod execution allows for intelligent risk-based decisions along with the optimization of the user experience. The data collected as part of this method is defined by the EMV 3DS Specification and is as follows: Accept Headers, IP Address, Java Enable, JavaScript Enabled, Language, Screen Color Depth, Screen Height and Width, Time Zone, and User-Agent string.
+* **3DSMethod** – This is a mechanism for the issuer/ACS to obtain additional browser data prior to authentication request flow. This browser data in addition to the other information available to the ACS/Issuer through authentication flow aids in the transaction risk assessment and associated decision on completing the transaction as frictionless or asking for additional user credentials through a step-up/challenge. 3DSMethod is a javascript executed on the browser and is owned and maintained by the Issuer/ACS and it is made available to the browser through a trusted party in the EMV 3DS Flow called as 3DS Server. The data collected by this method is proprietary to each issuer/ACS as determined by their risk engines.
+* **Browser Data in Authentication Request (AReq)**. This is the mechanism by which a list of browser data is carried through the EMV 3DS AReq data elements. This information in addition to the data issuer/ACS might have collected as part of 3DSMethod execution allows for intelligent risk-based decisions along with the optimization of the user experience. The data collected as part of this method is defined by the EMV 3DS Specification and is as follows: Accept Headers, IP Address, Java Enable, JavaScript Enabled, Language, Screen Color Depth, Screen Height and Width, Time Zone, and User-Agent string.
 
 
 ## Problem Statement
@@ -89,7 +89,7 @@ Data related to the browser being used to perform EMV 3DS transactions is collec
 
 ## Finding a Solution
 
-Device recognition is and will remain a critical need for Transaction Risk Assessments in all Card Not Present (CNP) Transactions. The following statement describes the ideal solution at a high level that is desired to be achieved as a result of this collaboration: Find a way to identify a browser in a unique, privacy aligned manner to be used exclusively for Transaction Risk Assessment in a payment context.
+Device recognition is and will remain a critical need for Transaction Risk Assessments in all Card Not Present (CNP) Transactions. The following statement describes the ideal solution at a high level that is desired to be achieved as a result of this collaboration: **Find a way to identify a browser in a unique, privacy aligned manner to be used exclusively for Transaction Risk Assessment in a payment context.**
 
 ### Goals 
 
