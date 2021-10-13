@@ -1,6 +1,6 @@
 # EMV® 3-D Secure Requirements for Risk Assessment
 
-The EMV® 3-D Secure Protocol (hereafter, "3DS") describes a
+The EMV® 3-D Secure Protocol (hereafter, "EMV 3DS") describes a
 "frictionless flow." The “frictionless” flow involves risk assessment
 by the issuing bank (or its Access Control Server partner) without
 requiring a user gesture. On the Web, this is generally accomplished
@@ -25,7 +25,7 @@ Status: This is a draft and represents no consensus.
 
 ## Background
 
-EMV&reg; 3-D Secure (EMV 3DS below) helps prevent the unauthorized use of a card online and provides consumers and merchants with the confidence that they are protected from fraud, while also supporting an easy and convenient purchasing experience that reduces the number of declined transactions.
+EMV&reg; 3-D Secure helps prevent the unauthorized use of a card online and provides consumers and merchants with the confidence that they are protected from fraud, while also supporting an easy and convenient purchasing experience that reduces the number of declined transactions.
 
 EMV 3DS is a fraud-prevention technology that enables consumers to authenticate themselves with their card issuer. EMV 3DS supports intelligent, data-driven and risk-based decisioning that encourages frictionless authentication. This means that for most transactions, the consumer clicks or taps online and the payment is approved.
 
@@ -45,11 +45,11 @@ Examples of high risk transactions include
 
 ### EMV 3DS Risk Assessment
 
-![Sources of data in 3DS risk assessment](risk-assessment.png)
+![Sources of data in EMV 3DS risk assessment](risk-assessment.png)
 
-### 3DS flows
+### EMV 3DS flows
 
-![3DS flows](3ds-flows.png)
+![EMV 3DS flows](3ds-flows.png)
 
 * **Start**: Cardholder—The Cardholder initiates the transaction using a browser on a Consumer Device using a website operated by the 3DS Requestor.
 * **1.1**: 3DS Requestor and 3DS Server—The 3DS Requestor communicates with the 3DS Server. The 3DS Server determines the ACS and DS Protocol Version(s) and, if present obtains the 3DS Method URL for the requested card range and returns the information to the 3DS Requestor. The ACS and DS Protocol Version(s) and 3DS Method URL data were previously received by the 3DS Server via a PRes message.
@@ -108,7 +108,7 @@ Furthermore, the ideal solution will not:
 
 * These identifiers will be unique for each browser instance
 * These identifiers will be generated and protected by browser core libraries and will be generated through native API calls
-* User will have option to reset the identifier, upon resetting the user may see more friction (challenge in 3DS context) until the new identifiers are part of issuer/ACS risk models
+* User will have option to reset the identifier, upon resetting the user may see more friction (challenge in EMV 3DS context) until the new identifiers are part of issuer/ACS risk models
 * User enrollment/consent takes place outside of the payments context and does not interrupt the payment flow
 
 ## Acknowledgments
